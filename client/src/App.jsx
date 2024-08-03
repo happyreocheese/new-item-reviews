@@ -15,9 +15,13 @@ function App() {
   const [array, setArray] = useState([]);
 
   const fetchAPI = async () => {
-    const response = await axios.get("http://localhost:5000/api/users");
-    console.log(response.data.users);
-    setArray(response.data.users);
+    try {
+      const response = await axios.get("http://localhost:5000/api/items"); // エンドポイントのURLを修正
+      console.log(response.data);
+      setArray(response.data);
+    } catch (error) {
+      console.error("Error fetching the API", error);
+    }
   };
   useEffect(() => {
     fetchAPI();
@@ -33,6 +37,7 @@ function App() {
             <Company
               companyName="スターバックス"
               stringP="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod aut tempore necessitatibus odio? Omnis, voluptas aperiam numquam, eaque architecto laboriosam nisi expedita enim provident placeat alias ullam officia accusamus distinctio?"
+              items={array}
               />
           }/>
           <Route path='/product' element={<Product />} />
