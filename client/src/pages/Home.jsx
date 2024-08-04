@@ -1,121 +1,129 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
+const Home = ({items,items2}) => {
+    const topRatedItems = items
+    .sort((a, b) => b.rate - a.rate)
+    .slice(0, 10);
 
-const Home = () => {
-    return (
-        <>
-            <body className='min-h-screen bg-gray-100'>
-                <div className="flex px-10 mx-auto w-full">
+    const topNumItems = items
+    .sort((a, b) => b.rev_num - a.rev_num)
+    .slice(0, 5);
 
-                    <section className="flex mt-8">
-                        <div className="border-solid border-8">
-                            <div className="font-medium text-xl px-20 pt-5 text-center md:text-left md:text-xl">
-                                今のおすすめ
-                            </div>
-                            <nav className="text-3xl flex flex-col mx-auto p-5 text-center leading-loose">
-                                <li className='list-none'><a href="#">商品名</a></li>
-                                <li className='list-none'><a href="#">商品名</a></li>
-                                <li className='list-none'><a href="#">商品名</a></li>
-                                <li className='list-none'><a href="#">商品名</a></li>
-                                <li className='list-none'><a href="#">商品名</a></li>
-                                <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                                    もっと見る＞
-                                </button>
-                            </nav>
-                        </div>
-                    </section>
+    const copImage=items2
+  return (
+    <>
+      <div className='bg-gray-100 p-6 rounded-lg shadow-md flex flex-col md:flex-row container m-auto'>
+        <div className='bg-gray-300 rounded-lg text-center w-full md:w-1/3 p-4'>
+          <h2 className='mb-4 text-xl font-bold'>評価の高い商品</h2>
+          <div className='space-y-4'>
+						{/* 上位5個をデータベースより表示 */}
+						{/* <ItemRank imageSrc="./img/stb1.jpg" rate="5.0" itemName="フラペチーノ"/>
+						<ItemRank imageSrc="./img/stb1.jpg" rate="5.0" itemName="フラペチーノ"/>
+						<ItemRank imageSrc="./img/stb1.jpg" rate="5.0" itemName="フラペチーノ"/>
+						<ItemRank imageSrc="./img/stb1.jpg" rate="5.0" itemName="フラペチーノ"/>
+						<ItemRank imageSrc="./img/stb1.jpg" rate="5.0" itemName="フラペチーノ"/> */}
+                        {topRatedItems.map(item => (<ItemRank key={item.id} itemName={item.name} imageSrc={item.image_path}rate={item.rate}/>))}
+                        
 
-                    <div className="flex flex-col justify-end mx-auto mt-8">
-                        <section className="w-full p-4 border-8 border-solid border-blue-500">
-                            <div className="flex gap-4 justify-center">
-                                <a href="https://example.com" target="_blank" rel="noopener noreferrer">
-                                    <img src="./img/mac.jpg" alt="a" className="w-20 h-20" />
-                                    
-                                </a>
-                                <a href="https://example.com" target="_blank" rel="noopener noreferrer">
-                                    <img src="./img/mac.jpg" alt="a" className="w-20 h-20" />
-                                </a>
-                                <a href="https://example.com" target="_blank" rel="noopener noreferrer">
-                                    <img src="./img/mac.jpg" alt="a" className="w-20 h-20" />
-                                </a>
-                                <a href="https://example.com" target="_blank" rel="noopener noreferrer">
-                                    <img src="./img/mac.jpg" alt="a" className="w-20 h-20" />
-                                </a>
-                                <a href="https://example.com" target="_blank" rel="noopener noreferrer">
-                                    <img src="./img/mac.jpg" alt="b" className="w-20 h-20" />
-                                </a>
-                            </div>
-                        </section>
-                        <section className="p-4 mt-8">
-                            <ul className="w-full grid grid-cols-1 gap-4 border-solid border-8 border-teal-400 h-96 overflow-y-auto">
-                                <li className="flex flex-col text-center px-5 py-5 m-1.5 border-solid border-8 border-teal-400 rounded-2xl h-60">
-                                    <a href="https://example.com">
-                                        レビュー
-                                    </a>
-                                    <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mt-auto">
-                                        もっと見る＞
-                                    </button>
-
-                                </li>
-                                <li className="flex flex-col text-center px-5 py-5 m-1.5 border-solid border-8 border-teal-400 rounded-2xl h-60">
-                                    <a href="https://example.com">
-                                        レビュー
-                                    </a>
-                                    <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mt-auto">
-                                        もっと見る＞
-                                    </button>
-
-                                </li>
-                                <li className="flex flex-col text-center px-5 py-5 m-1.5 border-solid border-8 border-teal-400 rounded-2xl h-60">
-                                    <a href="https://example.com">
-                                        レビュー
-                                    </a>
-                                    <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mt-auto">
-                                        もっと見る＞
-                                    </button>
-
-                                </li>
-                                <li className="flex flex-col text-center px-5 py-5 m-1.5 border-solid border-8 border-teal-400 rounded-2xl h-60">
-                                    <a href="https://example.com">
-                                        レビュー
-                                    </a>
-                                    <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mt-auto">
-                                        もっと見る＞
-                                    </button>
-
-                                </li>
-                                <li className="flex flex-col text-center px-5 py-5 m-1.5 border-solid border-8 border-teal-400 rounded-2xl h-60">
-                                    <a href="https://example.com">
-                                        レビュー
-                                    </a>
-                                    <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mt-auto">
-                                        もっと見る＞
-                                    </button>
-
-                                </li>
-                                <li className="flex flex-col text-center px-5 py-5 m-1.5 border-solid border-8 border-teal-400 rounded-2xl h-60">
-                                    <a href="https://example.com">
-                                        レビュー
-                                    </a>
-                                    <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mt-auto">
-                                        もっと見る＞
-                                    </button>
-
-                                </li>
-
-
-                               
-                               
-                            </ul>
-                        </section>
-
-                    </div>
-
-                </div>
-            </body>
-        </>
-    );
+          </div>
+        </div>
+        <div className='flex-1 mx-4'>
+          <div className='flex bg-gray-300 p-4 mb-3 rounded-lg justify-center space-x-2'>
+						{/* 5個固定 */}
+            {/* <Icon imageSrc="./img/mac.jpg" />
+            <Icon imageSrc="./img/mac.jpg" />
+            <Icon imageSrc="./img/mac.jpg" />
+            <Icon imageSrc="./img/mac.jpg" />
+            <Icon imageSrc="./img/mac.jpg" /> */}
+            {copImage.map(item=>(<Icon imageSrc={item.image_path}/>))}
+          </div>
+					<div className='bg-gray-300 rounded-lg p-4'>
+						<h2 className='text-center mb-4 text-xl font-bold'>人気の商品</h2>
+						<div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+							{/* <HomeItemPopup imageSrc="./img/stb1.jpg" rate="5.0" itemName="すいか"/>
+							<HomeItemPopup imageSrc="./img/pain.jpg" rate="5.0" itemName="メロン"/>
+							<HomeItemPopup imageSrc="./img/suika.jpg" rate="5.0" itemName="きゅうり"/>
+							<HomeItemPopup imageSrc="./img/stb1.jpg" rate="5.0" itemName="すいか"/>
+							<HomeItemPopup imageSrc="./img/pain.jpg" rate="5.0" itemName="メロン"/>
+							<HomeItemPopup imageSrc="./img/suika.jpg" rate="5.0" itemName="きゅうり"/>
+							<HomeItemPopup imageSrc="./img/stb1.jpg" rate="5.0" itemName="すいか"/>
+							<HomeItemPopup imageSrc="./img/pain.jpg" rate="5.0" itemName="メロン"/>
+							<HomeItemPopup imageSrc="./img/suika.jpg" rate="5.0" itemName="きゅうり"/> */}
+                            {topNumItems.map(item => (<HomeItemPopup key={item.id} itemName={item.name} imageSrc={item.image_path}rate={item.rate}/>))}
+						</div>
+					</div>
+        </div>
+      </div>
+    </>
+  );
 };
 
+
+const ItemRank = ({ imageSrc, rate, itemName }) => {
+	const navigate = useNavigate();
+	const text = "Hello";
+
+	return (
+		<a onClick={() => navigate("/Product", {
+			state: {
+				text
+			}
+		})} className='flex bg-white p-4 rounded-lg shadow-lg hover:bg-gray-100 duration-500'>
+			<img src={imageSrc} alt="商品画像" className="w-1/3 object-cover rounded-lg" />
+			<div className='m-auto'>
+				<p className='text-gray-800 font-semibold'>評価: {rate}</p>
+				<p className='text-gray-600'>{itemName}</p>
+			</div>
+		</a>
+	);
+};
+
+const HomeItemPopup = ({ imageSrc, rate, itemName }) => {
+	const navigate = useNavigate();
+	const text = "Hello";
+
+	return (
+		<a onClick={() => navigate("/Product", {
+			state: {
+				text
+			}
+		})} className='bg-white p-4 shadow-lg rounded-lg hover:bg-gray-100 duration-500'>
+			<img src={imageSrc} alt="商品画像" className="w-full h-32 object-cover rounded-lg mb-4" />
+			<p className='text-gray-800 font-semibold'>評価: {rate}</p>
+			<p className='text-gray-600'>{itemName}</p>
+			<div className='flex mt-3 text-green-500 items-center hover:text-green-800'>
+				レビューを見る
+				<svg
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
+						fill="currentColor"
+					/>
+				</svg>
+			</div>
+		</a>
+	);
+};
+
+const Icon = ({ imageSrc }) => {
+	const navigate = useNavigate();
+	const text = "Hello";
+
+  return (
+		<a onClick={() => navigate("/Company", {
+			state: {
+				text
+			}
+		})} >
+		<img src={imageSrc} alt="企業アイコン" className='rounded'/>
+	</a>
+  );
+};
 
 export default Home;

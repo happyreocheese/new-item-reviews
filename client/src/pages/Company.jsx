@@ -3,7 +3,7 @@ import ItemPopup from './../components/ItemPopup';
 
 const Company = ({ companyName, stringP, items }) => {
   const myVariable = process.env.MY_VARIABLE;
-  const filteredItems = items.filter(item => item.company === 'mac');
+  const filteredItems = items.filter(item => item.company === 'マクドナルド');
   return (
     <div className="bg-gray-100 p-6 rounded-lg shadow-md">
       <div>
