@@ -13,13 +13,12 @@ DROP TABLE IF EXISTS reviews;
 CREATE TABLE reviews (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
-    company TEXT,
     comment TEXT,
-    rate DOUBLE
+    rate INT
 );
 
-INSERT INTO reviews (name, company, comment, rate)
-VALUES ('すいかフラッペ', 'マクドナルド', 'センスないわマック', 5.0);
+INSERT INTO reviews (name, comment, rate)
+VALUES ('すいかフラッペ',  'センスないわマック', 5.0);
 
 SELECT * FROM reviews;
 
@@ -35,7 +34,7 @@ CREATE TABLE items (
     start DATE,
     finish DATE,
     image_path VARCHAR(255) NOT NULL, 
-    rate DOUBLE,
+    rate INT,
     intro TEXT,
     rev_num INTEGER
 );
@@ -66,7 +65,7 @@ CREATE TABLE corporates (
 );
 
 INSERT INTO corporates (company, intro, image_path, item_num) 
-VALUES ('マクドナルド', 'チキンクリスプ2個ください', 'https://www.mcdonalds.co.jp/assets/images/mcd-logo.svg', (SELECT COUNT(*) FROM items WHERE items.company = 'マクドナルド'));
+VALUES ('マクドナルド', 'チキンクリスプ2個ください', './img/mac.jpg', (SELECT COUNT(*) FROM items WHERE items.company = 'マクドナルド'));
 INSERT INTO corporates (company, intro, image_path, item_num) 
 VALUES ('スターバックス', 'チキンクリスプ1個ください', 'https://www.mcdonalds.co.jp/assets/images/mcd-logo.svg', (SELECT COUNT(*) FROM items WHERE items.company = 'スターバックス'));
 INSERT INTO corporates (company, intro, image_path, item_num) 
