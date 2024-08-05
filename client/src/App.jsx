@@ -5,7 +5,7 @@ import "./App.css";
 import axios from "axios";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Company from "./pages/Company";
+import Cop from "./pages/Cop";
 import Product from "./pages/Product";
 import Search from "./pages/Search";
 import Home from "./pages/Home";
@@ -51,8 +51,8 @@ function App() {
       {<Header />}
         <Routes>
           <Route path='/' element={<Home items={array} items2={array2}/>} />
-          <Route path='/company' element={
-            <Company
+          <Route path='/cop' element={
+            <Cop
               companyName="スターバックス"
               stringP="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod aut tempore necessitatibus odio? Omnis, voluptas aperiam numquam, eaque architecto laboriosam nisi expedita enim provident placeat alias ullam officia accusamus distinctio?"
               items={array}
