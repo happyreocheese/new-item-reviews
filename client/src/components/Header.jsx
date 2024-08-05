@@ -13,7 +13,7 @@ const Header = () => {
 					<div>Fresh Reviews</div>
 				</div>
 				<div className="text-3xl justify-center flex space-x-8 my-auto md:ml-auto">
-					<a href="#">
+					<a href="https://docs.google.com/forms/d/e/1FAIpQLScTyWTbLAVHx1mdmMW83hSWSE_r6eFbN9sd7kDvkuXybleIVQ/viewform?usp=sf_link" >
 						<svg
 							width="24"
 							height="24"

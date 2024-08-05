@@ -1,5 +1,5 @@
 import React from 'react'
-import StarRating from './StarRating'
+import StarRatingView from './StarRatingView'
 import { useNavigate } from 'react-router-dom'
 
 const ItemPopup = ({ imageSrc, rating, price, itemName }) => {
@@ -14,11 +14,11 @@ const ItemPopup = ({ imageSrc, rating, price, itemName }) => {
 		})} className="bg-white p-6 rounded-lg shadow-lg hover:bg-gray-100 duration-500">
       <img src={imageSrc} alt="商品画像" className="h-100 w-full object-cover rounded-t-lg" />
       <div className='m-2'>
-			<StarRating totalStars={rating} />
+			<StarRatingView score={rating} showsScore={true} />
       </div>
       <div className="mt-4">
         <p className="text-lg font-semibold text-gray-800">{itemName}</p>
-        <p className="text-gray-600 mt-2">{price}</p>
+        <p className="text-gray-600 mt-2">¥{price}</p>
       </div>
 			<div className='mg-auto'>
 				<div className='flex mt-3 text-green-500 items-center hober:text-green-800'>
