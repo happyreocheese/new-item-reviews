@@ -49,7 +49,7 @@ def submit():
     try:
         data = request.json
         db = get_db()
-        db.execute("INSERT INTO reviews (name, comment, rate) VALUES (?, ?, ?);", (data['name'], data['message'], data['rate']))
+        db.execute("INSERT INTO reviews (name, comment, rate,pname) VALUES (?, ?, ?,?);", (data['name'], data['message'], data['rate'],data['pname']))
         db.commit()
         return jsonify({'message': 'Data received successfully'}), 200
     except Exception as e:
@@ -61,13 +61,14 @@ def submit():
 def get_reviews():
     try:
         db = get_db()
-        cur = db.execute("SELECT id, name, rate, comment FROM reviews")
+        cur = db.execute("SELECT * FROM reviews")
         reviews = [
             {
                 "id": row[0],
                 "name": row[1],
-                "rate": row[2],
-                "comment": row[3]
+                "comment": row[2],
+                "rate": row[3],
+                "pname": row[4]
             }
             for row in cur.fetchall()
         ]

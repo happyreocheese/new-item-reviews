@@ -14,11 +14,12 @@ CREATE TABLE reviews (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     comment TEXT,
-    rate INT
+    rate INT,
+    pname TEXT
 );
 
-INSERT INTO reviews (name, comment, rate)
-VALUES ('モス好き',  'センスないわマック', 5.0);
+INSERT INTO reviews (name, comment, rate,pname)
+VALUES ('モス好き',  'センスないわマック', 5.0,'すいかフラッペ');
 
 SELECT * FROM reviews;
 
