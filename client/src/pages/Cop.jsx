@@ -32,6 +32,7 @@ const Cop = ({ companyName, stringP, items }) => {
               imageSrc={item.image_path}
               price={item.price}
               rating={item.rate}
+              path={item}
               />
           ))
         ) : (

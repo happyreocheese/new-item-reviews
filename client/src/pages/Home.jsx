@@ -19,8 +19,6 @@ const Home = ({items,items2}) => {
           <h2 className='mb-4 text-xl font-bold'>評価の高い商品</h2>
           <div className='space-y-4'>
                         {topRatedItems.map(item => (<ItemRank key={item.id} itemName={item.name} imageSrc={item.image_path}rate={item.rate} path={item}/>))}
-                        
-
           </div>
         </div>
         <div className='flex-1 ml-5'>

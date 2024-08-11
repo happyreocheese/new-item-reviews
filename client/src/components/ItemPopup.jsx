@@ -2,14 +2,14 @@ import React from 'react'
 import StarRatingView from './StarRatingView'
 import { useNavigate } from 'react-router-dom'
 
-const ItemPopup = ({ imageSrc, rating, price, itemName }) => {
+const ItemPopup = ({ imageSrc, rating, price, itemName,path }) => {
 	const navigate = useNavigate();
 	const text = "Hello";
 
   return (
     <a onClick={() => navigate("/Product", {
 			state: {
-				text
+				path
 			}
 		})} className="bg-white p-6 rounded-lg shadow-lg hover:bg-gray-100 duration-500">
       <img src={imageSrc} alt="商品画像" className="h-100 w-full object-cover rounded-t-lg" />
